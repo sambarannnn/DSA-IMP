@@ -24,9 +24,9 @@ class Solution {
         for(int i = 1; i < prices.length; i++) {
             currmaxprofit += prices[i] - prices[i-1];
             
-            maxprofit = Math.max(maxprofit, currmaxprofit);
             if(currmaxprofit < 0)
-                currmaxprofit = 0;
+                currmaxprofit = 0;//WE DO NOT MAKE LOSS MAKING TRADES
+            maxprofit = Math.max(maxprofit, currmaxprofit);
         }
         return maxprofit;
     }
