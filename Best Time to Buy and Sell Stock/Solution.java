@@ -13,3 +13,21 @@ class Solution {
         return maxprofit;
     }
 }
+//////////////////////////////////////////////////////////////////////////////////
+class Solution {
+    public int maxProfit(int[] prices) {
+        //kadane's algorithm
+        //max subarray sum type
+        int maxprofit = 0;
+        int currmaxprofit = 0;
+        
+        for(int i = 1; i < prices.length; i++) {
+            currmaxprofit += prices[i] - prices[i-1];
+            
+            maxprofit = Math.max(maxprofit, currmaxprofit);
+            if(currmaxprofit < 0)
+                currmaxprofit = 0;
+        }
+        return maxprofit;
+    }
+}
