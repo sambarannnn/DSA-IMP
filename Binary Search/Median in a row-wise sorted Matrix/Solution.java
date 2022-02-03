@@ -7,22 +7,38 @@ class Solution {
             min = Math.min(matrix[i][0], min);
             max = Math.max(matrix[i][c-1], max);
         }
-        //median is between max and min
+        
         
         //median should have tot/2 elements on left and tot/2 elements on right
         int reqd_smaller = (r*c)/2;
+        //median is between max and min
+        int low = min;
+        int high = max;
         //find last occurence of of number with count_of_smaller = reqd_smaller
-        while(min <= max) {
-            int mid = min + (max-min)/2;
+        //say for 1 2 3 3 6 6 6 9 9, median is 6(first occurence)
+        //first mid will be 5, whose cout_smaller will be 4 which makes it a
+        //legitimate candidate, but we move to the right still to find an
+        //illegitimate candidate(7) with invalid count_smaller
+        //so we move back and find 6 which is valid, so l = m+1 and l > r!!
+        //6 is answer!
+        //r is the reqd ans!!
+        //say for 1 2 3 3 3 6 6 9 9, median is 3(last occurence)
+        //mid = 5 will not satisy, so we move to left, 
+        //mid = 2 wont satisfy so we move to right
+        //mid = 3 will satisfy, so we move right again
+        //mid = 4 will not satisfy so we move r back and r < l !!
+        //so r is our ans i.e., 3!!
+        while(low <= high) {
+            int mid = low + (high-low)/2;
             int count_smaller = 0;
             count_smaller = BinaryFind(matrix, mid, r, c);//counts number of ele in matrix, smaller than this number
             if(count_smaller > reqd_smaller) {
-                max = mid-1;
+                high = mid-1;
             } else {
-                min = mid+1;
+                low = mid+1;
             }
         }
-        return max;//last element whose count is same than reqd
+        return high;//last element whose count is same than reqd
     }
     public static int BinaryFind(int[][] matrix, int num, int row, int c) {
         int count = 0;
@@ -46,3 +62,4 @@ class Solution {
         }
         return count;
     }
+}
