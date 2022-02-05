@@ -1,33 +1,33 @@
 class Solution {
     public int maxDistance(int[] position, int m) {
         Arrays.sort(position);
-        int lo = 0;
-        int hi = position[position.length-1];
-        int optimal = 0;
-        while (lo <= hi) {
-            int mid = lo + (hi-lo)/2;
-            if (canPut(position, m, mid)) {
-                optimal = mid;
-                lo = mid+1;
+        int low = 1;
+        int high = position[position.length-1]-position[0];
+        
+        while(low <= high) {
+            int mid = low + (high-low)/2;
+            if(isPossible(position, m, mid)) {
+                low = mid+1;
             } else {
-                hi = mid-1;
+                high = mid-1;
             }
         }
-        return optimal;
-    }
+        return high;
 
-    /*
-    * returns whether we can put m balls such that minimum distance between two consecutive ball is always greater than or equal to the max.
-    */
-    private boolean canPut(int[] positions, int m, int max) {
-        int count = 1;
-        int last = positions[0];
-        for (int i = 0; i < positions.length; i++) {
-            if (positions[i] - last >= max) {
-                last = positions[i];
-                count++;
+    }
+    public static boolean isPossible(int[] position, int tot_balls, int min_force) {
+        int curr_loc = position[0];
+        int placed_balls = 1;
+        
+        for(int i = 1; i < position.length; i++) {
+            if(position[i] - curr_loc >= min_force) {
+                curr_loc = position[i];
+                placed_balls++;
+            }
+            if(placed_balls == tot_balls) {
+                return true;
             }
         }
-        return count >= m;
+        return false;
     }
 }
