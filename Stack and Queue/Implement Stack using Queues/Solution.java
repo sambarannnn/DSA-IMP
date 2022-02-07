@@ -1,6 +1,51 @@
 
 
 // class MyStack {
+//     //1 queue, O(1) INSERT, O(N) DELETE
+//     int top;
+//     Queue<Integer> queue;
+//     boolean isEmpty;
+//     public MyStack() {
+//         top = -1;
+//         queue = new LinkedList<Integer>();
+//         isEmpty = true;
+//     }
+    
+//     public void push(int x) {
+//         top = x;
+//         queue.add(x);
+//     }
+    
+//     public int pop() {
+//         int size = queue.size();
+//         while(size-- > 1) {
+//             top = queue.remove();
+//             queue.add(top);
+//         }
+//         return queue.remove();
+//     }
+    
+//     public int top() {
+//         return top;
+//     }
+    
+//     public boolean empty() {
+//         if(queue.isEmpty())
+//              return true;
+//          return false;
+//     }
+// }
+
+// /**
+//  * Your MyStack object will be instantiated and called as such:
+//  * MyStack obj = new MyStack();
+//  * obj.push(x);
+//  * int param_2 = obj.pop();
+//  * int param_3 = obj.top();
+//  * boolean param_4 = obj.empty();
+//  */
+
+// class MyStack {
 //     //2 queues, O(1) INSERT & O(N) POP
 //     int top;
 //     Queue<Integer> queue1;
