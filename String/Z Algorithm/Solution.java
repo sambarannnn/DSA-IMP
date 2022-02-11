@@ -2,6 +2,7 @@ public class Solution {
 
 	public static int zAlgorithm(String s, String p, int n, int m) {
 		// Write your code here
+		//MODIFIED KMP
         String text = s;
         String pattern = p;
         int count = 0;
