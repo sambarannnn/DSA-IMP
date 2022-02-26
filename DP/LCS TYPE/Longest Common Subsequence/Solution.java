@@ -16,20 +16,7 @@ class Solution {
                 }
             }
         }
-        StringBuilder lcs_builder = new StringBuilder();
-        int i = n,j = m;
-        while(i > 0 && j > 0){    // if any of this i and j becomes 0 means one string is empty 
-            if(text1.charAt(i-1) == text2.charAt(j-1)){
-                lcs.append(text1.charAt(i-1));    //if character matches then add that to result string and move diagonally up
-                i--;j--;
-            }
-            else{ // else find the max of up and right position of dp table and move accordingly to up or left
-                if(dp[i][j-1] > dp[i-1][j]) 
-                    j--;    
-                else i--;
-            }
-        }
-        String LCS_res = lcs.reverse().toString();
+        
         return dp[text1.length()][text2.length()];
         // return lcs(text1, text2, text1.length(), text2.length(), new Integer[text1.length()+1][text2.length()+1];);
     }
