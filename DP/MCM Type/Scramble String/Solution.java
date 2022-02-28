@@ -12,7 +12,7 @@ class Solution {
             memo.put(key, true);
             return true;
         }
-        if(s1.length() == 1) {
+        if(s1.length() == 1) {//if both are at one char each and still not equal
             memo.put(key, false);
             return false;
         }
