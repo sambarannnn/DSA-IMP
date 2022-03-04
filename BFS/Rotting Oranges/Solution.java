@@ -8,6 +8,7 @@ class OrangePos {
 }
 class Solution {
     public int orangesRotting(int[][] grid) {
+        //BFS
         int totalOranges = 0;
         int rottenOranges = 0;
         int minutes = 0;
