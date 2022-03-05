@@ -10,7 +10,15 @@ class Solution {
         for(int num : nums)  {
             indexSums[num] += num;
         }
-        return earn(indexSums, indexSums.length, new Integer[indexSums.length+1]);
+        int[] dp = new int[indexSums.length+1];
+        dp[0] = 0;
+        dp[1] = indexSums[0];
+        for(int i = 1; i < indexSums.length; i++) {
+            dp[i+1] = Math.max(indexSums[i] + dp[i-1], dp[i]);
+        }
+        return dp[indexSums.length];
+        //MEMOIZED RECURSION BELOW
+        // return earn(indexSums, indexSums.length, new Integer[indexSums.length+1]);
     }
     public int earn(int[] nums, int length, Integer[] memo) {
         if(length <= 0) {
