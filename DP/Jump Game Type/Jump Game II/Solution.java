@@ -1,6 +1,23 @@
 class Solution {
     public int jump(int[] nums) {
-        return jump(nums, 0, new Integer[nums.length+1]);
+        //GREEDY O(N)
+        int jumps = 0;
+        int currMax = 0;
+        int currEnd = 0;
+        for(int i = 0; i < nums.length-1; i++) {//DONT INCLUDE LAST INDEX AS THAT IS DESTINATION
+            if(i > currMax) {
+                return -1;//unreachable index
+            }
+            currMax = Math.max(currMax, i + nums[i]);
+            if(i == currEnd) {
+                jumps++;
+                currEnd = currMax;
+                
+            } 
+        }
+        return jumps;
+        //dp below O(N^2)
+        // return jump(nums, 0, new Integer[nums.length+1]);
     }
     public int jump(int[] nums, int index, Integer[] memo) {
         if(index >= nums.length-1) {
