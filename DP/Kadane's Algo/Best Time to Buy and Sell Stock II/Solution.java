@@ -1,17 +1,26 @@
 class Solution {
     public int maxProfit(int[] prices) {
-        //in same pattern as other solns
-        int currBuy = prices[0];
-        int totProfit = 0;
+        //using state machine
+        int boughtState = -prices[0];
+        int soldState = 0;
         for(int i = 1; i < prices.length; i++) {
-            if(prices[i] - currBuy > 0) {//selling here gives us profit
-                totProfit += prices[i] - currBuy;
-                currBuy = prices[i];//buy at this day again if it goes up tomorrow
-            } else {
-                currBuy = Math.min(currBuy, prices[i]);//keep finding lowest buying point while we dont find profit
-            }
+            int temp = boughtState;
+            boughtState = Math.max(boughtState, soldState - prices[i]);
+            soldState = Math.max(soldState, temp + prices[i]);
         }
-        return totProfit;
+        return soldState;
+        //in same pattern as other solns
+        // int currBuy = prices[0];
+        // int totProfit = 0;
+        // for(int i = 1; i < prices.length; i++) {
+        //     if(prices[i] - currBuy > 0) {//selling here gives us profit
+        //         totProfit += prices[i] - currBuy;
+        //         currBuy = prices[i];//buy at this day again if it goes up tomorrow
+        //     } else {
+        //         currBuy = Math.min(currBuy, prices[i]);//keep finding lowest buying point while we dont find profit
+        //     }
+        // }
+        // return totProfit;
     }
 }
 
