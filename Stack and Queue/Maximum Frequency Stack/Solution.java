@@ -27,9 +27,53 @@ class FreqStack {
     }
 }
 
-/**
- * Your FreqStack object will be instantiated and called as such:
- * FreqStack obj = new FreqStack();
- * obj.push(val);
- * int param_2 = obj.pop();
- */
+//ALTER
+
+// class FreqStack {
+    
+//     class Value {
+//         int val;
+//         int freq;
+//         int time;
+        
+//         Value(int val, int freq, int time) {
+//             this.val = val;
+//             this.freq = freq;
+//             this.time = time;
+//         }
+//     }
+//     class ValueComparator implements Comparator<Value> {
+
+//         @Override
+//         public int compare(Value val1, Value val2) {
+//             if(val1.freq > val2.freq) {
+//                 return -1;
+//             } else if(val1.freq < val2.freq) {
+//                 return 1;
+//             } else {
+//                 return val2.time - val1.time;
+//             }
+//         }
+//     }
+//     int time;
+//     PriorityQueue<Value> max_freq;
+//     HashMap<Integer, Integer> freq_map;
+//     public FreqStack() {
+//         freq_map = new HashMap<Integer, Integer>();
+//         max_freq = new PriorityQueue<Value>(new ValueComparator());
+//         time = 0;
+//     }
+    
+//     public void push(int val) {
+//         time++;
+//         freq_map.put(val, freq_map.getOrDefault(val, 0) + 1);
+//         int currFreq = freq_map.get(val);
+//         max_freq.add(new Value(val, currFreq, time));
+//     }
+    
+//     public int pop() {
+//         int val = max_freq.remove().val;
+//         freq_map.put(val, freq_map.get(val) - 1);
+//         return val;
+//     }
+// }
