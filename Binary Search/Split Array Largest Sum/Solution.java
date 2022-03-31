@@ -1,14 +1,16 @@
 class Solution {
     public int splitArray(int[] nums, int m) {
-        //if i have only one subarray, all nums will be contained here (high)
-        //if i have m number of elements in nums, all subarrays will have one element each
-        //so minimum largest sum will be HIGHEST value of num here
-        int low = Integer.MAX_VALUE;
+        //IF M == NUMS.LENGTH, each element is a subarray, thus largest sum = max of all these elements
+        //IF M == 1, only one subarray, thus largest sum = sum of array elements
+        
+        //find leftmost occurence of this sum which is valid in given array
+        int low = Integer.MIN_VALUE;
         int high = 0;
         for(int num : nums) {
-            low = Math.min(low, num);
+            low = Math.max(low, num);
             high += num;
         }
+        
         while(low <= high) {
             int mid = low + (high-low)/2;
             if(isPossible(nums, m, mid)) {
@@ -20,16 +22,17 @@ class Solution {
         return low;
     }
     public static boolean isPossible(int[] nums, int max_containers, int max_sum) {
-        int container_count = 1;
         int curr_sum = 0;
+        int curr_containers = 1;
         
-        for(int i = 0; i < nums.length; i++) {
-            curr_sum += nums[i];
+        for(int num : nums) {
+            curr_sum += num;
             if(curr_sum > max_sum) {
-                container_count++;
-                curr_sum = nums[i];
-                if(curr_sum > max_sum || container_count > max_containers)
+                curr_containers++;
+                curr_sum = num;
+                if(curr_sum > max_sum || curr_containers > max_containers) {
                     return false;
+                }
             }
         }
         return true;
