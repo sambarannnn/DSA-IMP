@@ -31,10 +31,10 @@ class Solution {
                     else
                         right--;
                 }
-                while(j < nums.length-1 && nums[j] == nums[j+1])//skipping duplicates
+                while(j < nums.length-1 && nums[j] == nums[j+1]) //skipping duplicates
                     j++;
             }
-            while(i < nums.length-1 && nums[i] == nums[i+1])//skipping duplicates
+            while(i < nums.length-1 && nums[i] == nums[i+1]) //skipping duplicates
                     i++;
         }
         return new ArrayList<>(res);
