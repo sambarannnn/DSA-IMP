@@ -40,7 +40,7 @@ class Solution {
                     // We contributed M * (M-1) / 2 pairs.
                     ans += (k-j+1) * (k-j) / 2;
                     ans %= MOD;
-                    break;
+                    break; //break here as no further combinations possible
                 }
             }
         }
