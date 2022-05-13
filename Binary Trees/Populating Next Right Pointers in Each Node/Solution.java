@@ -2,6 +2,7 @@ class Solution {
     public Node connect(Node root) {
         //O(1) SPACE APPROACH WORKS UNIVERSALLY ON ALL TREES
         // DOESNT HAVE TO BE A PERFECT BINARY TREE
+        
         Node head = root;
         
         while(head != null) {//left downwards
