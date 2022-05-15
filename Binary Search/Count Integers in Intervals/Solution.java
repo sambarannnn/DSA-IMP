@@ -17,6 +17,7 @@ class CountIntervals {
             int end = right;
             
             // Remove overlapping intervals and update count.
+            //find interval whose starting is lesser than curr's ending and my curr's starting is smaller than that intervals ending
             while (s.floorKey(end) != null && s.get(s.floorKey(end)) >= start) {
                 int l = s.floorKey(end);
                 int r = s.get(l);
@@ -24,7 +25,6 @@ class CountIntervals {
                 end = Math.max(end, r);
                 count -= (r - l + 1);
                 s.remove(l);
-                
             }
             // Add (start, end) to TreeMap and update count.
             s.put(start, end);
