@@ -26,7 +26,7 @@ class Solution {
         }
     }
     public boolean blocked(char[][] chessboard, int r, int c) {
-        //iterate from first to curr's above row to check if the queens above it can kill it
+        //iterate from first to row above curr to check if the queens above it can kill it
         for(int i = 0; i < r; i++) {
             for(int j = 0; j < chessboard[r].length; j++) {
                 if(chessboard[i][j] == 'Q' && ((j==c) || (Math.abs(i-r) == Math.abs(j-c))))
