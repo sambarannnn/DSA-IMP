@@ -1,0 +1,28 @@
+class Solution {
+    public List<List<String>> suggestedProducts(String[] products, String searchWord) {
+        Arrays.sort(products);
+        List<List<String>> res = new ArrayList<List<String>>();
+        int a = 0;
+        int b = products.length-1;
+        //SHOULD USE BINARY SEARCH INSTEAD
+        for(int i = 0; i < searchWord.length(); i++) {
+            while(a <= b && 
+                  (products[a].length() <= i || products[a].charAt(i) != searchWord.charAt(i))) {
+                a++;
+            }
+            while(a <= b && 
+                  (products[b].length() <= i || products[b].charAt(i) != searchWord.charAt(i))) {
+                b--;
+            }
+            List<String> curr = new ArrayList<String>();
+            for(int k = a; k <= b; k++) {
+                curr.add(products[k]);
+                if(curr.size() == 3) {
+                    break;
+                }
+            }
+            res.add(curr);
+        }
+        return res;
+    }
+}
